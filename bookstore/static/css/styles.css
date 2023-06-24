@@ -1,0 +1,6 @@
+.errorlist{
+    color: red;
+    list-style:none;
+    background-color: gainsboro;
+    border-radius: 12px;
+}
