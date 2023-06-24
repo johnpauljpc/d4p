@@ -1,23 +1,26 @@
 from django.test import TestCase, SimpleTestCase
-from django.urls import reverse
+from django.urls import reverse, resolve
+from .views import home
 
 # Create your tests here.
 class TestHomePage(SimpleTestCase):
-    # @classmethod
+    def setUp(self):
+        url = reverse('home')
+        self.response = self.client.get(url)
     def testHomepageStatus(self):
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(self.response.status_code, 200)
         print('url tested')
 
     def test_homepage_url_name(self):
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(self.response.status_code, 200)
         print('url name tested')
 
     def test_homepage_template(self):
-        response = self.client.get('/')
-        self.assertTemplateUsed(response, 'home.html')
+        self.assertTemplateUsed(self.response, 'home.html')
 
     def test_homepage_contains_correct_html(self):
-        response = self.client.get('/')
-        self.assertContains(response, 'Halo')
+        self.assertContains(self.response, 'Halo')
+
+    def test_resolve_home(self):
+        view = resolve('/')
+        self.assertEqual(view.func.__name__, home.__name__)
