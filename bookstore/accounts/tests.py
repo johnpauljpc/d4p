@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+from django.urls import resolve, reverse
+from .views import SignupView
 
 class CustomUserTests(TestCase):
     def test_create_user(self):
@@ -31,9 +33,10 @@ class CustomUserTests(TestCase):
 
 class TestSignupView(TestCase):
     def setUp(self):
-        url = self.reolve('signup')
+        url = reverse('signup')
         self.response = self.client.get(url)
     
     def test_signup_template(self):
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, 'signup.html')
+        self.assertTemplateUsed(self.response, 'registration/signup.html')
+        self.assertEqual('signup', SignupView.as_view().__name__)
