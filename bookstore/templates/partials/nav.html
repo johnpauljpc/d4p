@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="site-icon">
+           <a href="{% url 'home' %}" style="color: #00a6ff; text-decoration: none;"> bookstore</a>
+
+        </div>
+        <div class="nav-items">
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">contact us</a></li>
+
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">login</a></li>
+                <li><a class="btn-outline" href="{% url 'signup' %}">Signup</a></li>
+                {% endif %}
+                
+            </ul>
+        </div>
+
+    </div>
+</nav>
