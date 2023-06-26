@@ -37,10 +37,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    
+
+    #Third-party apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # Local apps
     'accounts',
     'pages',
 ]
+# django-allauth configuration
+SITE_ID = 1
 
+AUTHENTICATION_BACKENDS = [
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
 # Custom User model
 AUTH_USER_MODEL = 'accounts.CustomUser'
 MIDDLEWARE = [
