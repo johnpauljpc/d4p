@@ -10,6 +10,17 @@
     border-radius: 12px;
     
 }
+.btn-danger {
+    color: white;
+    background-color: orangered;
+    padding: 5px;
+    border: none;
+}
+
+.btn-danger:hover{
+    background-color: orange;
+}
+
 .btn-outline{
     padding: 5px;
     border-radius: 5px;
