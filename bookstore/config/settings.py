@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 # django-allauth configuration
 SITE_ID = 1
 ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 
 AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
