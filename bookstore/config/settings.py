@@ -32,6 +32,7 @@ DEBUG =env('DEBUG', cast=int)
 print(type(DEBUG))
 
 ALLOWED_HOSTS = ['*']
+DEFAULT_FROM_EMAIL = 'webmaster@example.com'
 
 
 # Application definition
@@ -176,3 +177,16 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
+
+# Email configuration
+ACCOUNT_EMAIL_VERIFICATION='mandatory'
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
+
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_SSL = env('EMAIL_USE_SSL')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
