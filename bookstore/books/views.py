@@ -1,17 +1,21 @@
 from django.shortcuts import render
 
+from .models import Book
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 
 # Create your views here.
 #booklist book detailview CRUD
 class BookList(ListView):
-    pass
+    model = Book
+    # template_name = 'books/book-list.html'
 
 class BookDetail(DetailView):
-    pass
+    model = Book
 
 class EditBook(UpdateView):
-    pass
+    model = Book
+    fields = ('title', 'author', 'price')
+    template_name = 'books/book_edit.html'
 
 class DeleteBook(DeleteView):
-    pass
+    model = Book
