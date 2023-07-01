@@ -6,7 +6,7 @@
 .errorlist{
     color: red;
     list-style:none;
-    background-color: gainsboro;
+   display: block;
     border-radius: 12px;
     
 }
