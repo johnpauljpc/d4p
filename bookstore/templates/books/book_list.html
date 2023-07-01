@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %} home {% endblock title%}
+{% block title %} books {% endblock title%}
 
 {% block content %}
-    <h1>Books Available</h1>
+    <h1>Books Available ({{book_list.count}})</h1>
     {% for book in book_list %}
-    <li>{{book}}</li>
+    <li><a href="{{book.get_absolute_url}}">{{book}}</a></li>
     {% endfor %}
 
 
