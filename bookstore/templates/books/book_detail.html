@@ -19,8 +19,10 @@
                 <div>
                     <h3>Add review</h3>
                     <form action="{% url 'add_review' book.id %}" method="post">
-                        {{form}}
-                        <button>Submit</button>
+                        {% csrf_token %}
+                      
+                        <textarea name="review" id="" cols="30" rows="10"></textarea>
+                        <p><button>Submit</button></p>
                     </form>
                 </div>
 

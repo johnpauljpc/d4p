@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, View
 
 from .models import Book, Reviews
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
+from .forms import ReviewForm
 
 # Create your views here.
 #booklist book detailview CRUD
@@ -20,5 +23,12 @@ class EditBook(UpdateView):
 class DeleteBook(DeleteView):
     model = Book
 
-class AddReview(CreateView):
-    model = Reviews
+
+# class AddReview(View):
+#     def get(self, request):
+#         form = ReviewForm()
+#         return render(request, "books/book_detail.html", {'form':form})
+def AddReview(request, pk):
+    if request.method == "POST":
+        review = request.POST['review']
+        return HttpResponse(review)
