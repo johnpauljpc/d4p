@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from .models import Book
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView
+from .models import Book, Reviews
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
 
 # Create your views here.
 #booklist book detailview CRUD
@@ -19,3 +19,6 @@ class EditBook(UpdateView):
 
 class DeleteBook(DeleteView):
     model = Book
+
+class AddReview(CreateView):
+    model = Reviews

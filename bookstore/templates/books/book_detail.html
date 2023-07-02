@@ -8,6 +8,23 @@
         <p>Author: {{book.author}}</p>
         <p>Price: {{book.price}}</p>
         <a href="{% url 'edit-book' book.id %}">Edit</a>
+            <div class="reviews">
+                {%if book.reviews.all %}
+                    {% for review in  book.reviews.all %}
+                 <p> &nbsp; &nbsp; &nbsp; <b>{{review.user}}:</b> &nbsp; {{review.review}}</p>
+
+                    {% endfor  %}
+                {% endif %}
+
+                <div>
+                    <h3>Add review</h3>
+                    <form action="{% url 'add_review' book.id %}" method="post">
+                        {{form}}
+                        <button>Submit</button>
+                    </form>
+                </div>
+
+            </div>
     </div>
 
 
