@@ -46,3 +46,14 @@ def AddReview(request):
         messages.success(request, "review successfully added")
         
         return HttpResponseRedirect(reverse('book-detail', args=[str(book_id)]))
+    
+
+def DelReview(request, pk):
+    review = Reviews.objects.filter(id = pk).first()
+
+    if review and ( review.user == request.user ):
+        review.delete()
+        messages.success(request, "review deleted")
+
+    # return HttpResponseRedirect(reverse())
+    return redirect(request.META.get("HTTP_REFERER", "/")) 

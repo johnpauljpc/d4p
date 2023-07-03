@@ -11,7 +11,7 @@
             <div class="reviews">
                 {%if book.reviews.all %}
                     {% for review in  book.reviews.all %}
-                 <p> &nbsp; &nbsp; &nbsp; <b>{{review.user}}:</b> &nbsp; {{review.review}}</p>
+                 <p> &nbsp; &nbsp; &nbsp; <b>{{review.user}}:</b> &nbsp; {{review.review}}   <a href="{% url 'del_review' review.pk %}">delete</a></p>
 
                     {% endfor  %}
                 {% endif %}
