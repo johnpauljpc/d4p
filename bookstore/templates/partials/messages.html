@@ -2,7 +2,7 @@
     <div>
      
         {% for message in messages %}
-        <p class="">{{message}}</p>
+        <p class="">{{message|safe}}</p>
         {% endfor %}
     </div>
     {% endif %}

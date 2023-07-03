@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, View
 
@@ -30,8 +32,15 @@ class DeleteBook(DeleteView):
 #     def get(self, request):
 #         form = ReviewForm()
 #         return render(request, "books/book_detail.html", {'form':form})
-def AddReview(request):
-    if request.method == "POST":
+
+# @login_required(login_url="account_login")
+class AddReview(LoginRequiredMixin,View):
+    def get(self, request):
+        
+        return HttpResponseRedirect(reverse('book-list'))
+
+    
+    def post(self, request):
         review = request.POST['review']
         book_id = request.POST["book_id"]
         book = Book.objects.filter(id = book_id).first()
@@ -54,6 +63,8 @@ def DelReview(request, pk):
     if review and ( review.user == request.user ):
         review.delete()
         messages.success(request, "review deleted")
+    else:
+        messages.info(request, f"<b>Just dey play!</b> ONLY the author of the comment can delete it..")
 
     # return HttpResponseRedirect(reverse())
     return redirect(request.META.get("HTTP_REFERER", "/")) 
