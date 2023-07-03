@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, View
 
@@ -28,7 +30,19 @@ class DeleteBook(DeleteView):
 #     def get(self, request):
 #         form = ReviewForm()
 #         return render(request, "books/book_detail.html", {'form':form})
-def AddReview(request, pk):
+def AddReview(request):
     if request.method == "POST":
         review = request.POST['review']
-        return HttpResponse(review)
+        book_id = request.POST["book_id"]
+        book = Book.objects.filter(id = book_id).first()
+        if len((review).strip()) < 1:
+            messages.info(request, "can't be empty")
+            return HttpResponseRedirect(reverse('book-detail', args=[str(book_id)]))
+        Reviews.objects.create(
+            book = book,
+            review = review,
+            user = request.user
+        )
+        messages.success(request, "review successfully added")
+        
+        return HttpResponseRedirect(reverse('book-detail', args=[str(book_id)]))

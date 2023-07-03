@@ -22,7 +22,7 @@ class Book(models.Model):
 class Reviews(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="reviews")
-    review = models.TextField()
+    review = models.CharField( max_length=200)
 
     def __str__(self):
         return f"review on {self.book}"

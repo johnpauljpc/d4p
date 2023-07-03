@@ -8,5 +8,5 @@ urlpatterns=[
     path('<uuid:pk>/edit/', EditBook.as_view(), name="edit-book"),
     path('<uuid:pk>/delete/', DeleteBook.as_view(), name="delete-book"),
 
-    path('<uuid:pk>/add-review/', AddReview, name="add_review"),
+    path('add-review/', AddReview, name="add_review"),
 ]
