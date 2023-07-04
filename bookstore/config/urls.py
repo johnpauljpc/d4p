@@ -1,6 +1,12 @@
 
 from django.contrib import admin
 from django.urls import path, include
+
+# media configuration
+from django.conf.urls.static import static
+from django.conf import settings
+
+# views
 from allauth.account.views import SignupView, LogoutView
 
 urlpatterns = [
@@ -17,4 +23,4 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('books/', include('books.urls'))
    
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

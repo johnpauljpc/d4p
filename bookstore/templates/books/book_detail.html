@@ -7,11 +7,21 @@
         <h1>{{book.title}}</h1>
         <p>Author: {{book.author}}</p>
         <p>Price: {{book.price}}</p>
+
+        {% if book.cover %}
+        <img class="bookcover" src="{{ book.cover.url}}" alt="{{ book.title }}">
+        {% endif %}
+
+        {% if book.ebook %}
+        <p><a href="{{book.ebook.url}}" download="">download</a></p>
+        <p><a href="{{book.ebook.url}}" >read</a></p>
+        {% endif %}
         <a href="{% url 'edit-book' book.id %}">Edit</a>
             <div class="reviews">
                 {%if book.reviews.all %}
                     {% for review in  book.reviews.all %}
                  <p> &nbsp; &nbsp; &nbsp; <b>{{review.user}}:</b> &nbsp; {{review.review}}   <a href="{% url 'del_review' review.pk %}">delete</a></p>
+                
 
                     {% endfor  %}
                 {% endif %}
