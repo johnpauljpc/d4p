@@ -22,7 +22,7 @@
                         {% csrf_token %}
                       
                         <textarea name="review" id="" cols="30" rows="10" placeholder="add review" required></textarea>
-                        <p>{% if user.is_anonymous %} <a href="{% url 'account_login' %}">login to add review</a> {% else %} <button value="{{book.id}}" name="book_id">Submit</button> {% endif %}</p>
+                        <p>{% if user.is_anonymous %} <a  href="{% url 'account_login' %}">login to add review </a> {% else %} <button value="{{book.id}}" name="book_id">Submit</button> {% endif %}</p>
                     </form>
                 </div>
 
