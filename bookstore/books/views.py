@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, View
 
@@ -16,8 +16,9 @@ class BookList(ListView):
     model = Book
     # template_name = 'books/book-list.html'
 
-class BookDetail(DetailView):
+class BookDetail(PermissionRequiredMixin,DetailView):
     model = Book
+    permission_required = ('special_status')
 
 class EditBook(UpdateView):
     model = Book
