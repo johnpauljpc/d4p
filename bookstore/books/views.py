@@ -65,7 +65,7 @@ def DelReview(request, pk):
         review.delete()
         messages.success(request, "review deleted")
     else:
-        messages.info(request, f"<b>Just dey play!</b> ONLY the author of the comment can delete it..")
+        messages.info(request, f"<b><i>Just dey play!</i></b> ONLY the author of the comment can delete it..")
 
     # return HttpResponseRedirect(reverse())
     return redirect(request.META.get("HTTP_REFERER", "/")) 
