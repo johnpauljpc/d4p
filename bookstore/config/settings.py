@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'accounts',
     'pages',
     'books',
+    'orders',
 ]
 # django-allauth configuration
 SITE_ID = 1
