@@ -4,6 +4,12 @@
 
 {% block content %}
     <h1>Homepage</h1>
+
+    <form action="{% url 'search-result' %}">
+        <input type="search" name="query" id="">
+        <button>search</button>
+
+    </form>
     {% if user.is_authenticated %}
     Hi {{ user.email }}!
     <p><a href="{% url 'logout' %}">Log Out</a></p>

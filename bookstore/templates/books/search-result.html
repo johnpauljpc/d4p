@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} search results {% endblock title%}
+
+{% block content %}
+<h4>search results for {{query}}</h4>
+<div class="search-results">
+    {% if books %}
+        <i>search found:-</i>
+        {% for result in books %}
+           <div>
+                <a href="{% url 'book-detail' result.id %}">{{result.title}}</a>
+                <p>author: {{result.author}} </p>
+                <p>price: #{{result.price}}</p>
+           </div>
+
+        {% endfor %}
+    {% else %}
+        <i>search not found! :)</i>
+    {% endif %}
+</div>
+
+{% endblock content %}

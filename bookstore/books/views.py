@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.db.models import Q
 
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, View
 
@@ -69,3 +70,18 @@ def DelReview(request, pk):
 
     # return HttpResponseRedirect(reverse())
     return redirect(request.META.get("HTTP_REFERER", "/")) 
+
+
+class SearchView(View):
+    def get(self, request):
+        book = Book.objects.all()
+        q = request.GET['query']
+        print("************************")
+        print(q)
+        result = book.filter(Q(title__icontains = q) | Q(author__icontains = q))
+
+        context = {
+            'query':q,
+            'books':result
+        }
+        return render(request, "books/search-result.html", context)
