@@ -6,7 +6,7 @@
 <h4>search results for {{query}}</h4>
 <div class="search-results">
     {% if books %}
-        <i>search found:-</i>
+        <i>search found ({{books.count}}) results:-</i>
         {% for result in books %}
            <div>
                 <a href="{% url 'book-detail' result.id %}">{{result.title}}</a>

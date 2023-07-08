@@ -85,3 +85,5 @@ class SearchView(View):
             'books':result
         }
         return render(request, "books/search-result.html", context)
+    
+
