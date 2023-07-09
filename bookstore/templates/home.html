@@ -5,9 +5,9 @@
 {% block content %}
     <h1>Homepage</h1>
 
-    <form action="{% url 'search-result' %}">
-        <input type="search" name="query" id="">
-        <button>search</button>
+    <form action="{% url 'search-result' %}" onsubmit="return true;">
+        <input type="search" name="query" id="search" placeholder="search..." class="search"  >
+        <button class="search search-btn " id="search-btn">search</button>
 
     </form>
     {% if user.is_authenticated %}

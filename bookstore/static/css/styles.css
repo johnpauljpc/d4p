@@ -67,6 +67,22 @@ ul a:hover{
     margin-left: 15px;
 }
 
+.search{
+    padding: 5px;
+    outline: none;
+    border: #00a6ff 2px solid;
+    font-size: 18px;
+}
+.search-btn{
+    color: white;
+    background-color: #00a6ff;
+    font-weight: bold;
+}
+.search-btn:hover{
+    scale: 1.1;
+    cursor: pointer;
+}
+
 /* BODY */
 .container{
 width: 90%;
