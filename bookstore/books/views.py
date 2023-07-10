@@ -72,18 +72,27 @@ def DelReview(request, pk):
     return redirect(request.META.get("HTTP_REFERER", "/")) 
 
 
-class SearchView(View):
-    def get(self, request):
-        book = Book.objects.all()
-        q = request.GET['query']
-        print("************************")
-        print(q)
-        result = book.filter(Q(title__icontains = q) | Q(author__icontains = q))
+# class SearchView(View):
+#     def get(self, request):
+#         book = Book.objects.all()
+#         q = request.GET['query']
+#         print("************************")
+#         print(q)
+#         result = book.filter(Q(title__icontains = q) | Q(author__icontains = q))
 
-        context = {
-            'query':q,
-            'books':result
-        }
-        return render(request, "books/search-result.html", context)
+#         context = {
+#             'query':q,
+#             'books':result
+#         }
+#         return render(request, "books/search-result.html", context)
     
 
+class SearchView(ListView):
+    model = Book
+    context_object_name = 'books'
+    template_name = 'books/search-result.html'
+    def get_queryset(self):
+        q = self.request.GET['query']
+        return Book.objects.filter(
+    Q(title__icontains=q) | Q(title__icontains=q)
+    )
