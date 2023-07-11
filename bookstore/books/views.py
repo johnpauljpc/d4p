@@ -64,7 +64,7 @@ def DelReview(request, pk):
 
     if review and ( review.user == request.user ):
         review.delete()
-        messages.success(request, "review deleted")
+        messages.success(request, "review deleted successfully")
     else:
         messages.info(request, f"<b><i>Just dey play!</i></b> ONLY the author of the comment can delete it..")
 
