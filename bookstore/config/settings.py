@@ -52,11 +52,15 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    #for api
+    'rest_framework',
+
     # Local apps
     'accounts',
     'pages',
     'books',
     'orders',
+    'api',
 ]
 # django-allauth configuration
 SITE_ID = 1
