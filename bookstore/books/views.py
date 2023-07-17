@@ -43,7 +43,7 @@ class AddReview(LoginRequiredMixin,View):
 
     
     def post(self, request):
-        review = request.POST['review']
+        review = request.POST['review'] 
         book_id = request.POST["book_id"]
         book = Book.objects.filter(id = book_id).first()
         if len((review).strip()) < 1:

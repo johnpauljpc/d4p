@@ -18,17 +18,21 @@
         {% endif %}
         <a href="{% url 'edit-book' book.id %}">Edit</a>
             <div class="reviews">
+                <h3>Reviews</h3>
                 {%if book.reviews.all %}
+                
                     {% for review in  book.reviews.all %}
                  <p> &nbsp; &nbsp; &nbsp; <b>{{review.user}}:</b> &nbsp; {{review.review}}   <a href="{% url 'del_review' review.pk %}">delete</a></p>
                 
+                    {% empty %}
+                    <p><i>No review yet!</i></p>
 
                     {% endfor  %}
                 {% endif %}
 
                 <div>
                     <h3>Add review</h3>
-                    <form action="{% url 'add_review'  %}" >
+                    <form action="{% url 'add_review'  %}" method="POST" >
                         {% csrf_token %}
                       
                         <textarea name="review" id="" cols="30" rows="10" placeholder="add review" required></textarea>

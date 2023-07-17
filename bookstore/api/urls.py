@@ -2,6 +2,6 @@ from django.urls import path
 from .views import Home, BookRUD
 
 urlpatterns = [
-    path('', Home.as_view(), name='home' ),
-    path('book/<uuid:id>/', BookRUD.as_view(), name = "book-rud"),
+    path('', Home.as_view(), name='home-api' ),
+    path('book/<uuid:pk>/', BookRUD.as_view(), name = "book-rud"),
 ]

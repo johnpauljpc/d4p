@@ -88,3 +88,15 @@ ul a:hover{
 width: 90%;
 margin: auto;
 }
+
+.bookcover{
+    width: 100px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.messages{
+    padding: 5px;
+    background-color: antiquewhite;
+    color: tomato;
+}
