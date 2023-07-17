@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     #for api
     'rest_framework',
+    'drf_yasg',
 
     # Local apps
     'accounts',
