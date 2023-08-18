@@ -17,7 +17,7 @@ class BookList(ListView):
     model = Book
     # template_name = 'books/book-list.html'
 
-class BookDetail(PermissionRequiredMixin,DetailView):
+class BookDetail(PermissionRequiredMixin, DetailView):
     model = Book
     permission_required = ('special_status')
 
