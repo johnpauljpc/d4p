@@ -3,6 +3,12 @@
     padding: 0;
     /* outline: 1px dotted orange; */
 }
+a{
+    text-decoration: none;
+}
+ul, li{
+    list-style: none;
+}
 .errorlist{
     color: red;
     list-style:none;
@@ -26,6 +32,7 @@
     border-radius: 5px;
     border: 1px solid #00a6ff;
     color: #00a6ff;
+    text-decoration: none;
 
 }
 .btn-outline:hover{

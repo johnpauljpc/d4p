@@ -17,9 +17,22 @@ class BookList(ListView):
     model = Book
     # template_name = 'books/book-list.html'
 
-class BookDetail(PermissionRequiredMixin, DetailView):
-    model = Book
-    permission_required = ('special_status')
+# class BookDetail(PermissionRequiredMixin, DetailView):
+#     model = Book
+#     permission_required = ['books.special_status']
+class BookDetail(LoginRequiredMixin,View):
+    def get(self, request, pk):
+        book = Book.objects.get(id = pk)
+        context={
+            'book':book
+        }
+        if request.user.has_perm('books.special_status'):
+            return render(request, "books/book_detail.html", context)
+        else:
+            messages.info(request, f"dear {request.user}, to be authorized to read all the books pay once!")
+            # return HttpResponseRedirect(reverse('book-order'))
+            return redirect(request.META.get("HTTP_REFERER", "/"))
+            return 
 
 class EditBook(UpdateView):
     model = Book

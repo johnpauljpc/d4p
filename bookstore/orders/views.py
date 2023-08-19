@@ -1,6 +1,7 @@
 from typing import Any, Dict
 from django.shortcuts import render
 from django.views.generic import TemplateView, View
+from django.contrib.auth.models import Permission
 from django.conf  import settings
 import stripe
 
@@ -16,8 +17,6 @@ class OrderBook(TemplateView):
         return context
     
 class Charge(View):
-    def get(self, request):
-        return render(request, "orders/charge.html")
     
     def post(self, request):
         
@@ -27,4 +26,12 @@ class Charge(View):
             description = 'purchase all books',
             source = request.POST['stripeToken']
         )
+
+        # Get the permission
+        permission = Permission.objects.get(name = 'Can read all books')
+        # or ==>  permission = Permission.objects.get(codename = "special_status")
+        #get user
+        u = request.user
+        #add permission to user
+        u.user_permissions.add(permission)
         return render(request, "orders/charge.html")
