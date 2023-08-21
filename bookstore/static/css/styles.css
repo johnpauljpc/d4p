@@ -107,3 +107,7 @@ margin: auto;
     background-color: antiquewhite;
     color: tomato;
 }
+
+.fade{
+    opacity: 0.5;
+}
