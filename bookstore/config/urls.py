@@ -1,6 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
+import debug_toolbar
 
 # media configuration
 from django.conf.urls.static import static
@@ -25,5 +26,7 @@ urlpatterns = [
     path('order/', include('orders.urls')),
 
     path('api/', include('api.urls') ),
+    path('__debug__/', include(debug_toolbar.urls)),
    
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
