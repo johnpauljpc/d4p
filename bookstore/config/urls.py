@@ -13,7 +13,8 @@ from allauth.account.views import SignupView, LogoutView
 
 urlpatterns = [
     path('debug-toolbar/', include(debug_toolbar.urls)),
-    path('admin/', admin.site.urls),
+    path('my-main-domain/', admin.site.urls),
+    # path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
 
     #User management
     # path('accounts/', include('django.contrib.auth.urls')),

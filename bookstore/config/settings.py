@@ -39,8 +39,10 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
+  
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'debug_toolbar',
+    
 
     #for api
     'rest_framework',
@@ -217,11 +220,13 @@ STRIPE_TEST_SECRET_KEY = env('STRIPE_TEST_SECRET_KEY')
 if ENVIRONMENT == 'production':
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
-    SECURE_SSL_REDIRECT = False
-    SECURE_HSTS_SECONDS = 0 # new
+    SECURE_SSL_REDIRECT = False  #Should be TRUE
+    SECURE_HSTS_SECONDS = 10# new
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True # new
     SECURE_HSTS_PRELOAD = True # new
     SECURE_CONTENT_TYPE_NOSNIFF = True # new
+    SESSION_COOKIE_SECURE = True # new
+    CSRF_COOKIE_SECURE = True # new
 
 
     
